@@ -1,0 +1,8 @@
+.button {
+  @include button-reset;
+}
+
+.button {
+  padding: 12px 16px;
+  @extend %btn-border;
+}
