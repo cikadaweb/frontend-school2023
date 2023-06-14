@@ -1,0 +1,38 @@
+
+// Подключение переменных
+@import '../../global-scss/_variables';
+// Подключение миксинов
+@import '../../global-scss/_mixins.scss';
+// Подключение стилей кнопки
+@import '../../global-scss/button/_button';
+// Подключение расширений
+@import '../../global-scss/_extensions.scss';
+// Подключение normalize
+@import '../../global-scss/_normalize.scss';
+// Подключение базовых настроек
+@import '../../global-scss/_settings.scss';
+
+.placeholder {
+  padding: 24px 0;
+  height: 100vh;
+}
+
+.placeholder__container {
+  height: 100%;
+}
+
+.placeholder__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  @extend %btn-border;
+}
+
+.placeholder__button {
+  @include font(14px, 400, 19px);
+  @extend %bg-primary-default;
+  margin-top: 10px;
+}
