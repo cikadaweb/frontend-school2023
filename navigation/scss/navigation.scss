@@ -1,0 +1,114 @@
+// Подключение переменных
+@import '../../global-scss/_variables';
+// Подключение миксинов
+@import '../../global-scss/_mixins.scss';
+// Подключение расширений
+@import '../../global-scss/_extensions.scss';
+// Подключение normalize
+@import '../../global-scss/_normalize.scss';
+// Подключение базовых настроек
+@import '../../global-scss/_settings.scss';
+
+.header {
+  padding: 24px 0;
+  @extend %bg-primary-default;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: end;
+}
+
+.header__list {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.header__link {
+  @include font(14px, 400, 19px);
+  text-decoration: none;
+  color: $secondary;
+  background: transparent;
+  border: 1px solid $secondary;
+  padding: 12px 16px;
+  @extend %btn-border;
+  transition: all 0.3s ease 0s;
+
+  &:hover {
+    color: $primary;
+    background: $secondary;
+  }
+  &_active {
+    color: $primary;
+    background: $secondary;
+  }
+}
+
+.header__profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  @extend %btn-border;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    border: 1px solid $secondary;
+  }
+  &:active {
+    @extend %bg-secondary-default;
+    .header__arrow-icon {
+      fill: #DCDCDE;
+    }
+  }
+}
+
+.header__profile-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.header__arrow-icon {
+  fill: $secondary;
+}
+
+.header__dropdown-menu {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  background: #FFFFFF;
+  padding: 8px 0;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  top: 43px;
+  right: 0;
+
+  &_active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.header__dropdown-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.header__dropdown-link {
+  @include font(14px, 400, 19px);
+  display: block;
+  text-decoration: none;
+  color: $primary;
+  padding: 8px 16px;
+}
