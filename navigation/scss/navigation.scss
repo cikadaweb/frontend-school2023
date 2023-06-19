@@ -1,13 +1,13 @@
 // Подключение переменных
-@import '../../global-scss/_variables';
+@import '../../global-scss/variables';
 // Подключение миксинов
-@import '../../global-scss/_mixins.scss';
+@import '../../global-scss/mixins.scss';
 // Подключение расширений
-@import '../../global-scss/_extensions.scss';
-// Подключение normalize
-@import '../../global-scss/_normalize.scss';
+@import '../../global-scss/extensions.scss';
+// Подключение reset
+@import '../../global-scss/reset.scss';
 // Подключение базовых настроек
-@import '../../global-scss/_settings.scss';
+@import '../../global-scss/settings.scss';
 
 .header {
   padding: 24px 0;
@@ -22,7 +22,6 @@
 }
 
 .header__list {
-  list-style: none;
   display: flex;
   gap: 24px;
   padding: 0;
@@ -31,7 +30,6 @@
 
 .header__link {
   @include font(14px, 400, 19px);
-  text-decoration: none;
   color: $secondary;
   background: transparent;
   border: 1px solid $secondary;
@@ -98,7 +96,6 @@
 }
 
 .header__dropdown-list {
-  list-style: none;
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -108,7 +105,6 @@
 .header__dropdown-link {
   @include font(14px, 400, 19px);
   display: block;
-  text-decoration: none;
   color: $primary;
   padding: 8px 16px;
 }
