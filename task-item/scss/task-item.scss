@@ -1,13 +1,13 @@
 // Подключение переменных
-@import '../../global-scss/_variables';
+@import '../../global-scss/variables';
 // Подключение миксинов
-@import '../../global-scss/_mixins.scss';
+@import '../../global-scss/mixins.scss';
 // Подключение расширений
-@import '../../global-scss/_extensions.scss';
-// Подключение normalize
-@import '../../global-scss/_normalize.scss';
+@import '../../global-scss/extensions.scss';
+// Подключение reset
+@import '../../global-scss/reset.scss';
 // Подключение базовых настроек
-@import '../../global-scss/_settings.scss';
+@import '../../global-scss/settings.scss';
 
 .task-item {
   color: $primary;
