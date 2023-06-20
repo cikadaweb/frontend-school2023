@@ -1,19 +1,21 @@
 // Подключение переменных
 @import '../../global-scss/variables';
 // Подключение миксинов
-@import '../../global-scss/mixins.scss';
+@import '../../global-scss/mixins';
 // Подключение расширений
-@import '../../global-scss/extensions.scss';
+@import '../../global-scss/extensions';
 // Подключение reset
-@import '../../global-scss/reset.scss';
+@import '../../global-scss/reset';
 // Подключение базовых настроек
-@import '../../global-scss/settings.scss';
+@import '../../global-scss/settings';
+// Подключение kebab-btn
+@import '../../global-scss/kebab-btn/kebab-btn';
 
 .task-item {
   color: $primary;
   border-bottom: 1px solid #1C1C1C;
   &:hover {
-    .dots {
+    .kebab-btn {
       visibility: visible;
       opacity: 1;
       pointer-events: all;
@@ -60,25 +62,4 @@
   @include font(14px, 400, 19px);
   white-space: nowrap;
   color: $disabled;
-}
-
-.dots {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-
-  position: absolute;
-  top: 10px;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 42px;
-  height: 42px;
-  background: $secondary;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  @extend %btn-border;
-  margin-right: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
 }

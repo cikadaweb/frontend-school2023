@@ -3,8 +3,8 @@
   color: #FFFFFF;
 }
 
-.dots,
-.task-badge {
+.task-badge,
+.kebab-btn {
   border-radius: 4px;
 }
 
@@ -84,12 +84,31 @@ img {
   transition: all 0.3s ease 0s;
 }
 
+.kebab-btn {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-right: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
 .task-item {
   color: #1C1C1C;
   border-bottom: 1px solid #1C1C1C;
 }
 
-.task-item:hover .dots {
+.task-item:hover .kebab-btn {
   visibility: visible;
   opacity: 1;
   pointer-events: all;
@@ -136,23 +155,4 @@ img {
   line-height: 19px;
   white-space: nowrap;
   color: #8E8E8E;
-}
-
-.dots {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 10px;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 42px;
-  height: 42px;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  margin-right: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
 }
