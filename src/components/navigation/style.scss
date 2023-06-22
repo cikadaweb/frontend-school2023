@@ -51,7 +51,7 @@
   &:active {
     @extend %bg-secondary-default;
     .header__arrow-icon {
-      fill: #DCDCDE;
+      color: #DCDCDE;
     }
   }
 }
@@ -63,7 +63,12 @@
 }
 
 .header__arrow-icon {
-  fill: $secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  color: $secondary;
 }
 
 .header__dropdown-menu {

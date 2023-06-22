@@ -1,3 +1,5 @@
+import imgPath from "../../assets/images/avatar.png";
+
 function createNavigation() {
   return `<header class="header">
       <div class="container">
@@ -16,20 +18,14 @@ function createNavigation() {
           <div class="header__profile">
             <img
               class="user-avatar"
-              src="../assets/avatar.png"
+              src="${imgPath}"
               alt="profile-img"
             />
-            <svg
-              class="header__arrow-icon"
-              width="14"
-              height="8"
-              viewBox="0 0 14 8"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.99999 4.95L2.04999 0L0.635986 1.414L6.99999 7.778L13.364 1.414L11.95 0L6.99999 4.95Z"
-              />
-            </svg>
+            <div class="header__arrow-icon">
+              <svg width="14" height="8">
+                <use xlink:href="#arrow-down" />
+              </svg>
+            </div>
 
             <div class="header__dropdown-menu">
               <ul class="header__dropdown-list">
