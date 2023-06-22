@@ -10,7 +10,10 @@
       opacity: 1;
       pointer-events: all;
     }
-    .user-avatar, .project-item__body div:last-of-type {
+    .project-item__body div:last-of-type {
+      margin-right: 58px;
+    }
+    .project-item__header div:first-of-type {
       margin-right: 58px;
     }
   }
