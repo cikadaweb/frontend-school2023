@@ -1,15 +1,5 @@
-// Подключение переменных
-@import '../../global-scss/variables';
-// Подключение миксинов
-@import '../../global-scss/mixins';
-// Подключение расширений
-@import '../../global-scss/extensions';
-// Подключение reset
-@import '../../global-scss/reset';
-// Подключение базовых настроек
-@import '../../global-scss/settings';
 // Подключение kebab-btn
-@import '../../global-scss/kebab-btn/kebab-btn';
+@import '../../scss/kebab-btn/kebab-btn';
 
 .task-item {
   color: $primary;

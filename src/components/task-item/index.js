@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task item</title>
-    <!-- <link rel="stylesheet" href="../css/task-item.css" /> -->
-    <link rel="stylesheet" href="../task-item/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
+function createTaskItem() {
+  return `<div class="container">
       <div class="task-item">
         <div class="task-item__container">
           <div class="task-item__header">
@@ -85,6 +76,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </body>
-</html>
+    </div>`;
+}
+
+export { createTaskItem };
