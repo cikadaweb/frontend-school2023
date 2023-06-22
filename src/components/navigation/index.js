@@ -44,7 +44,6 @@ function createNavigation() {
 }
 
 function addNavigationListener() {
-  const isShowProfileMenu = false;
   const header = document.querySelector(".header");
   header.addEventListener("click", (event) => {
     const headerProfile = event.target.closest(".header__profile");
