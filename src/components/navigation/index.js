@@ -43,4 +43,23 @@ function createNavigation() {
     </header>`;
 }
 
-export { createNavigation };
+function addNavigationListener() {
+  const isShowProfileMenu = false;
+  const header = document.querySelector(".header");
+  header.addEventListener("click", (event) => {
+    const headerProfile = event.target.closest(".header__profile");
+    if (headerProfile) {
+      const headerMenu = document.querySelector(".header__dropdown-menu");
+      headerMenu.classList.toggle("header__dropdown-menu_active");
+
+      headerProfile.classList.toggle("header__profile_active");
+
+      const arrowIcon = headerProfile.querySelector(".header__arrow-icon");
+      if (arrowIcon) {
+        arrowIcon.classList.toggle("header__arrow-icon_active");
+      }
+    }
+  });
+}
+
+export { createNavigation, addNavigationListener };

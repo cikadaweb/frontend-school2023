@@ -56,6 +56,13 @@
   }
 }
 
+.header__profile_active {
+  @extend %bg-secondary-default;
+  .header__arrow-icon {
+    color: #DCDCDE;
+  }
+}
+
 .header__profile-avatar {
   width: 24px;
   height: 24px;
@@ -69,6 +76,11 @@
   width: 24px;
   height: 24px;
   color: $secondary;
+  transition: all 0.3s ease 0s;
+}
+
+.header__arrow-icon_active {
+  transform: rotate(180deg);
 }
 
 .header__dropdown-menu {
@@ -83,6 +95,7 @@
   right: 0;
 
   &_active {
+    z-index: 5;
     display: flex;
     opacity: 1;
     visibility: visible;
