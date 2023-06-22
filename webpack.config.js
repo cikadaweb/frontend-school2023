@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
@@ -10,27 +11,44 @@ module.exports = {
     path: path.resolve(__dirname, "dist"), // __dirname - абсолютный путь
     clean: true, // очистить папку dist
   },
+  devServer: {
+    port: 3000,
+    watchFiles: ["./dist"],
+    open: true,
+    compress: true,
+  },
   module: {
     rules: [
-      // webpack может импортировать только JS и Json, для импорта других типов файлов нужны лоадеры
       {
-        test: /\.css$/i, // название файла
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource", // создает отдельный файл и экспортирует URL
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        test: /\.(?:|jpg|jpeg|webp|png|gif)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "./assets/images/[name][ext]",
+        },
       },
+      {
+        test: /\.svg$/,
+        loader: "svg-sprite-loader",
+      },
+      {
+        test: /\.(?:|woff|woff2)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "./assets/fonts/[name][ext]",
+        },
+      },
+      // SCSS loader
       {
         test: /\.scss$/i,
         use: [
           "style-loader",
           "css-loader",
           {
+            // Add autoprefixes to CSS
             loader: "postcss-loader",
             options: {
               postcssOptions: {
@@ -45,6 +63,7 @@ module.exports = {
               },
             },
           },
+          // Compiles Sass to CSS
           "sass-loader",
         ],
       },
@@ -61,14 +80,15 @@ module.exports = {
     ],
   },
   plugins: [
+    // CSS plugin
+    new MiniCssExtractPlugin({
+      filename: "style.scss",
+    }),
+    // HTML plugin
     new HtmlWebpackPlugin({
       // HtmlWebpackPlugin создает index.html в директории с бандлом
       title: "main", // и автоматически добавляет в него ссылку на бандл.
       template: "./src/index.html",
     }),
   ],
-  devServer: {
-    static: "./dist",
-    watchFiles: ["./src/index.html"],
-  },
 };
