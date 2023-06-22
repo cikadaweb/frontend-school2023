@@ -1,34 +1,20 @@
 import { createNavigation } from "../components/navigation/index";
+import { createProjectItems } from "../components/project-item/index";
+import { createTaskItems } from "../components/task-item/index";
 import { createPlaceholder } from "../components/placeholder/index";
-import { createProjectItem } from "../components/project-item/index";
-import { createTaskItem } from "../components/task-item/index";
+
+import data from "../js/data";
 
 import "../scss/style.scss";
-
-// let cards = [
-//   {
-//     name: "name 1",
-//     info: {
-//       description: "description 1",
-//       date: "12.12.2022",
-//     },
-//   },
-//   {
-//     name: "name 2",
-//     info: {
-//       description: "description 2",
-//       date: "10.12.2022",
-//     },
-//   },
-// ];
+import "../js/register";
 
 function initApp() {
   let app = document.querySelector(".app");
 
   let navHtml = createNavigation();
+  let projectItemHtml = createProjectItems(data.projects);
+  let taskItemHtml = createTaskItems(data.tasks);
   let placeholderHtml = createPlaceholder();
-  let projectItemHtml = createProjectItem();
-  let taskItemHtml = createTaskItem();
 
   app.insertAdjacentHTML("afterbegin", navHtml);
   app.insertAdjacentHTML("afterend", placeholderHtml);
