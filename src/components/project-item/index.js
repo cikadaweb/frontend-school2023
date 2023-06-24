@@ -27,6 +27,16 @@ function createProject({
               <use xlink:href="#dots" />
             </svg>
           </div>
+          <div class="kebab-btn__dropdown-menu">
+            <ul class="kebab-btn__dropdown-list">
+              <li>
+                <a href="#" class="kebab-btn__dropdown-link">Редактировать</a>
+              </li>
+              <li>
+                <a href="#" class="kebab-btn__dropdown-link kebab-btn__dropdown-link_red">Удалить</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>`;
 }
@@ -41,4 +51,23 @@ function createProjectItems(projects) {
   return projectItemsTemplate;
 }
 
-export { createProjectItems };
+function addProjectItemListener() {
+  // обрабатываем hover эффект
+  const projectItems = document.querySelectorAll(".project-item");
+  projectItems.forEach((project) => {
+    project.addEventListener("mouseenter", () => {
+      project.classList.add("project-item_active");
+    });
+    project.addEventListener("mouseleave", () => {
+      const kebabButtonActive = project.querySelector(
+        ".kebab-btn__dropdown-menu_active"
+      );
+      // если меню открыто, то project-item_active актуально
+      if (!kebabButtonActive) {
+        project.classList.remove("project-item_active");
+      }
+    });
+  });
+}
+
+export { createProjectItems, addProjectItemListener };

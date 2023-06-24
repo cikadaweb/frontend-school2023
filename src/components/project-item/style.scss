@@ -4,23 +4,26 @@
 .project-item {
   color: $primary;
   border-bottom: 1px solid #1C1C1C;
-  &:hover {
-    .kebab-btn {
+}
+
+.project-item_active {
+  .kebab-btn {
       visibility: visible;
       opacity: 1;
       pointer-events: all;
     }
+
     .project-item__body div:last-of-type {
       margin-right: 58px;
     }
+
     .project-item__header div:first-of-type {
       margin-right: 58px;
     }
-  }
 }
 
 .project-item {
-  padding-top: 10px; ///
+  padding-top: 10px; 
 }
 
 .project-item__container {
