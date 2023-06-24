@@ -1,7 +1,17 @@
-import { createNavigation } from "../components/navigation/index";
-import { createProjectItems } from "../components/project-item/index";
-import { createTaskItems } from "../components/task-item/index";
+import {
+  createNavigation,
+  addNavigationListener,
+} from "../components/navigation/index";
+import {
+  createProjectItems,
+  addProjectItemListener,
+} from "../components/project-item/index";
+import {
+  createTaskItems,
+  addTaskItemListener,
+} from "../components/task-item/index";
 import { createPlaceholder } from "../components/placeholder/index";
+import { addKebabBtnListener } from "./kebab-btn";
 
 import data from "../js/data";
 
@@ -20,6 +30,11 @@ function initApp() {
   app.insertAdjacentHTML("afterend", placeholderHtml);
   app.insertAdjacentHTML("afterend", projectItemHtml);
   app.insertAdjacentHTML("afterend", taskItemHtml);
+
+  addNavigationListener();
+  addKebabBtnListener();
+  addTaskItemListener();
+  addProjectItemListener();
 }
 
 initApp();
