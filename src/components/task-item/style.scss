@@ -4,16 +4,19 @@
 .task-item {
   color: $primary;
   border-bottom: 1px solid #1C1C1C;
-  &:hover {
-    .kebab-btn {
+}
+
+.task-item_active {
+  .kebab-btn {
       visibility: visible;
       opacity: 1;
       pointer-events: all;
     }
-    .user-avatar, .task-item__body div:last-of-type {
+
+    .user-avatar,
+    .task-item__body div:last-of-type {
       margin-right: 58px;
     }
-  }
 }
 
 .task-item {
@@ -44,7 +47,8 @@
 
 .task-badge {
   padding: 0 8px;
-  @extend %border-bronze;
+  background-color: $bronze;
+  color: $secondary;
   @extend %btn-border;
 }
 

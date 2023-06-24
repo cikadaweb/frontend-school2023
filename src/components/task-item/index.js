@@ -41,6 +41,16 @@ function createTask({
               <use xlink:href="#dots" />
             </svg>
           </div>
+          <div class="kebab-btn__dropdown-menu">
+            <ul class="kebab-btn__dropdown-list">
+              <li>
+                <a href="#" class="kebab-btn__dropdown-link">Редактировать</a>
+              </li>
+              <li>
+                <a href="#" class="kebab-btn__dropdown-link kebab-btn__dropdown-link_red">Удалить</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>`;
 }
@@ -50,9 +60,28 @@ function createTaskItems(tasks) {
   tasks.forEach((task) => {
     taskItemsTemplate += createTask(task);
   });
-  taskItemsTemplate = `<div class="container">${taskItemsTemplate}</div>`;
+  taskItemsTemplate = `<div class="container container_task-items">${taskItemsTemplate}</div>`;
 
   return taskItemsTemplate;
 }
 
-export { createTaskItems };
+function addTaskItemListener() {
+  // обрабатываем hover эффект
+  const taskItems = document.querySelectorAll(".task-item");
+  taskItems.forEach((task) => {
+    task.addEventListener("mouseenter", () => {
+      task.classList.add("task-item_active");
+    });
+    task.addEventListener("mouseleave", () => {
+      const kebabButtonActive = task.querySelector(
+        ".kebab-btn__dropdown-menu_active"
+      );
+      // если меню открыто, то task-item_active актуально
+      if (!kebabButtonActive) {
+        task.classList.remove("task-item_active");
+      }
+    });
+  });
+}
+
+export { createTaskItems, addTaskItemListener };
