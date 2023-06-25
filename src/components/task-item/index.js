@@ -66,21 +66,34 @@ function createTaskItems(tasks) {
 }
 
 function addTaskItemListener() {
-  // обрабатываем hover эффект
-  const taskItems = document.querySelectorAll(".task-item");
-  taskItems.forEach((task) => {
-    task.addEventListener("mouseenter", () => {
-      task.classList.add("task-item_active");
-    });
-    task.addEventListener("mouseleave", () => {
-      const kebabButtonActive = task.querySelector(
+  const container = document.querySelector(".container_task-items");
+
+  container.addEventListener("mouseover", (event) => {
+    const taskItem = event.target.closest(".task-item");
+    if (taskItem) {
+      taskItem.classList.add("task-item_active");
+    }
+  });
+
+  container.addEventListener("mouseout", (event) => {
+    const taskItem = event.target.closest(".task-item");
+    if (taskItem) {
+      const kebabButtonActive = taskItem.querySelector(
         ".kebab-btn__dropdown-menu_active"
       );
-      // если меню открыто, то task-item_active актуально
       if (!kebabButtonActive) {
-        task.classList.remove("task-item_active");
+        taskItem.classList.remove("task-item_active");
       }
-    });
+    }
+  });
+
+  container.addEventListener("click", (event) => {
+    const kebabButton = event.target.closest(".kebab-btn");
+    if (kebabButton) {
+      kebabButton.classList.toggle("kebab-btn_active");
+      const kebabDropdownMenu = kebabButton.nextElementSibling;
+      kebabDropdownMenu.classList.toggle("kebab-btn__dropdown-menu_active");
+    }
   });
 }
 
