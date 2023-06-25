@@ -46,27 +46,40 @@ function createProjectItems(projects) {
   projects.forEach((project) => {
     projectItemsTemplate += createProject(project);
   });
-  projectItemsTemplate = `<div class="container">${projectItemsTemplate}</div>`;
+  projectItemsTemplate = `<div class="container container_project-items">${projectItemsTemplate}</div>`;
 
   return projectItemsTemplate;
 }
 
 function addProjectItemListener() {
-  // обрабатываем hover эффект
-  const projectItems = document.querySelectorAll(".project-item");
-  projectItems.forEach((project) => {
-    project.addEventListener("mouseenter", () => {
-      project.classList.add("project-item_active");
-    });
-    project.addEventListener("mouseleave", () => {
-      const kebabButtonActive = project.querySelector(
+  const container = document.querySelector(".container_project-items");
+
+  container.addEventListener("mouseover", (event) => {
+    const projectItem = event.target.closest(".project-item");
+    if (projectItem) {
+      projectItem.classList.add("project-item_active");
+    }
+  });
+
+  container.addEventListener("mouseout", (event) => {
+    const projectItem = event.target.closest(".project-item");
+    if (projectItem) {
+      const kebabButtonActive = projectItem.querySelector(
         ".kebab-btn__dropdown-menu_active"
       );
-      // если меню открыто, то project-item_active актуально
       if (!kebabButtonActive) {
-        project.classList.remove("project-item_active");
+        projectItem.classList.remove("project-item_active");
       }
-    });
+    }
+  });
+
+  container.addEventListener("click", (event) => {
+    const kebabButton = event.target.closest(".kebab-btn");
+    if (kebabButton) {
+      kebabButton.classList.toggle("kebab-btn_active");
+      const kebabDropdownMenu = kebabButton.nextElementSibling;
+      kebabDropdownMenu.classList.toggle("kebab-btn__dropdown-menu_active");
+    }
   });
 }
 
