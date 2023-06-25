@@ -10,7 +10,7 @@ function createProject({
   return `<div class="project-item">
         <div class="project-item__container">
           <div class="project-item__header">
-            <div>${name}</div>
+            <div class="project-item__title">${name}</div>
           </div>
 
           <div class="project-item__body">
