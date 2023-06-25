@@ -14,10 +14,10 @@ function createTask({
   executor,
   time,
 }) {
-  return ` <div class="task-item">
+  return `<div class="task-item">
         <div class="task-item__container">
           <div class="task-item__header">
-            <div>${name}</div>
+            <div class="task-item__title">${name}</div>
             <img
               class="user-avatar"
               src="${imgPath}"
