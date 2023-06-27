@@ -1,4 +1,4 @@
-import imgPath from "../../assets/images/avatar.png";
+import imgPath from "@/assets/images/avatar.png";
 
 function createNavigation() {
   return `<header class="header">
@@ -6,10 +6,10 @@ function createNavigation() {
         <nav class="header__nav">
           <ul class="header__list">
             <li>
-              <a href="#" class="header__link">Проекты</a>
+              <a href="#" class="header__link" data-items=projects >Проекты</a>
             </li>
             <li>
-              <a href="#" class="header__link">Задачи</a>
+              <a href="#" class="header__link" data-items=tasks >Задачи</a>
             </li>
             <li>
               <a href="#" class="header__link">Пользователи</a>
@@ -57,6 +57,37 @@ function addNavigationListener() {
       if (arrowIcon) {
         arrowIcon.classList.toggle("header__arrow-icon_active");
       }
+    }
+  });
+
+  // обработка ссылок навигации
+  const headerLinks = document.querySelectorAll(".header__link");
+  headerLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      headerLinks.forEach((link) => {
+        link.classList.remove("header__link_active");
+      });
+      link.classList.toggle("header__link_active");
+      localStorage.setItem("active-link", link.dataset.items);
+      location.reload();
+    });
+  });
+
+  // обработка события вне header__profile
+  document.addEventListener("click", function (event) {
+    const profileElement = document.querySelector(".header__profile");
+    const dropdownMenuElement = document.querySelector(
+      ".header__dropdown-menu"
+    );
+    const arrowIconElement = document.querySelector(".header__arrow-icon");
+
+    const isProfileClicked = profileElement.contains(event.target);
+    const isDropdownMenuClicked = dropdownMenuElement.contains(event.target);
+
+    if (!isProfileClicked && !isDropdownMenuClicked) {
+      profileElement.classList.remove("header__profile_active");
+      dropdownMenuElement.classList.remove("header__dropdown-menu_active");
+      arrowIconElement.classList.remove("header__arrow-icon_active");
     }
   });
 }
