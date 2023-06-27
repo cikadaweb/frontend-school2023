@@ -1,0 +1,20 @@
+.projects-buttons, .tasks-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-buttons__list, .tasks-buttons__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.projects-buttons__btn, .tasks-buttons__btn {
+  @include font(14px, 400, 19px);
+  background-color: #1F75CB; //ToDo
+  color: #FFFFFF; //ToDo
+  border-radius: 4px; //ToDo
+  margin-top: 10px;
+}
