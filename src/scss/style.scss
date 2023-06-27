@@ -12,10 +12,13 @@
 @import './settings';
 
 // Подключение стилей для navigation
-@import '../components/navigation/style';
+@import '@/components/navigation/style';
 // Подключение стилей для placeholder
-@import '../components/placeholder/style';
+@import '@/components/placeholder/style';
 // Подключение стилей для project-item
-@import '../components/project-item/style';
+@import '@/components/project-item/style';
 // Подключение стилей для task-item
-@import '../components/task-item/style';
+@import '@/components/task-item/style';
+
+// Подключение стилей для hm3-http-promise
+@import '@/components/hm3-http-promise/style.scss'
