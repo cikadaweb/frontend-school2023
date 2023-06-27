@@ -1,4 +1,4 @@
-import imgPath from "../../assets/images/avatar.png";
+import imgPath from "@/assets/images/avatar.png";
 
 function createTask({
   _id,
