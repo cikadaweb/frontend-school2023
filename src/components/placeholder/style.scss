@@ -21,8 +21,8 @@
   @include font(14px, 400, 19px);
   @extend %bg-primary-default;
   @extend %btn-border;
-  background-color: #1F75CB; //ToDo
-  color: #FFFFFF; //ToDo
-  border-radius: 4px; //ToDo
+  background-color: #1F75CB;
+  color: #FFFFFF;
+  border-radius: 4px;
   margin-top: 10px;
 }
