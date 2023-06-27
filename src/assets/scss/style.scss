@@ -1,0 +1,12 @@
+// Подключение переменных
+@import './variables';
+// Подключение миксинов
+@import './mixins';
+// Подключение расширений
+@import './extensions';
+// Подключение reset
+@import './reset';
+// Подключение стилей кнопки
+@import './button/button';
+// Подключение базовых настроек
+@import './settings';
