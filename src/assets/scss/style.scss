@@ -1,12 +1,10 @@
 // Подключение переменных
-@import './variables';
+@import '@/assets/scss/variables';
 // Подключение миксинов
-@import './mixins';
+@import '@/assets/scss/mixins';
 // Подключение расширений
-@import './extensions';
+@import '@/assets/scss/extensions';
 // Подключение reset
-@import './reset';
-// Подключение стилей кнопки
-@import './button/button';
+@import '@/assets/scss/reset';
 // Подключение базовых настроек
-@import './settings';
+@import '@/assets/scss/settings';
