@@ -5,13 +5,36 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/projects',
+    component: () => import('@/layouts/DefaultLayout.vue'),
+    alias: '/',
+    children: [
+      {
+        path: '',
+        name: 'ProjectsPage',
+        component: () => import('@/views/ProjectsPage.vue')
+      }
+    ]
+  },
+  {
+    path: '/tasks',
     component: () => import('@/layouts/DefaultLayout.vue'),
     children: [
       {
         path: '',
-        name: 'HomePage',
-        component: () => import('@/views/HomePage.vue')
+        name: 'TasksPage',
+        component: () => import('@/views/TasksPage.vue')
+      }
+    ]
+  },
+  {
+    path: '/users',
+    component: () => import('@/layouts/DefaultLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'UsersPage',
+        component: () => import('@/views/UsersPage.vue')
       }
     ]
   }
@@ -20,7 +43,9 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  linkActiveClass: 'header__link_active',
+  linkExactActiveClass: 'header__link_active'
 })
 
 export default router
