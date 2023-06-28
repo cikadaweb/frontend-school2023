@@ -7,19 +7,17 @@
             <router-link class="header__link" :to="link.url">{{ link.name }}</router-link>
           </li>
         </ul>
-        <div class="header__profile">
+        <div class="header__profile" @click="openProfileMenu">
           <img
             class="user-avatar"
-            src=""
+            src="@/assets/img/avatar.png"
             alt="profile-img"
           />
-          <div class="header__arrow-icon">
-            <svg width="14" height="8">
-              <use xlink:href="#arrow-down" />
-            </svg>
+          <div class="header__arrow-icon" :class="isShowProfileMenu ? 'header__arrow-icon_active' : ''">
+            <SVGIcon id="#arrow-down" width="14" height="8" />
           </div>
 
-          <div class="header__dropdown-menu">
+          <div class="header__dropdown-menu" :class="isShowProfileMenu ? 'header__dropdown-menu_active' : ''">
             <ul class="header__dropdown-list">
               <li v-for="link in profileLinks" :key="link.id">
                 <router-link class="header__dropdown-link" :to="link.url">{{ link.name }}</router-link>
@@ -33,8 +31,13 @@
 </template>
 
 <script>
+import SVGIcon from '@/components/svgIcon/SVGIcon.vue'
+
 export default {
   name: 'HomePage',
+  components: {
+    SVGIcon
+  },
   data () {
     return {
       navLinks: [
@@ -65,7 +68,13 @@ export default {
           name: 'Выход',
           url: '/'
         }
-      ]
+      ],
+      isShowProfileMenu: false
+    }
+  },
+  methods: {
+    openProfileMenu () {
+      this.isShowProfileMenu = !this.isShowProfileMenu
     }
   }
 }
@@ -87,14 +96,11 @@ export default {
 .header__list {
   display: flex;
   gap: 24px;
-  padding: 0;
-  margin: 0;
 }
 
 .header__link {
   @include font(14px, 400, 19px);
   color: $secondary;
-  background: transparent;
   border: 1px solid $secondary;
   padding: 12px 16px;
   @extend %btn-border;
@@ -104,10 +110,11 @@ export default {
     color: $primary;
     background: $secondary;
   }
-  &_active {
-    color: $primary;
-    background: $secondary;
-  }
+}
+
+.header__link_active {
+  color: $primary;
+  background: $secondary;
 }
 
 .header__profile {
@@ -168,14 +175,14 @@ export default {
   top: 43px;
   right: 0;
   animation: menuFadeIn 0.3s ease 0.6s forwards;
+}
 
-  &_active {
-    z-index: 5;
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-    animation: menuFadeIn 0.3s ease forwards;
-  }
+.header__dropdown-menu_active {
+  z-index: 5;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  animation: menuFadeIn 0.3s ease forwards;
 }
 
 @keyframes menuFadeIn {
@@ -191,8 +198,6 @@ export default {
 .header__dropdown-list {
   display: flex;
   flex-direction: column;
-  padding: 0;
-  margin: 0;
 }
 
 .header__dropdown-link {
