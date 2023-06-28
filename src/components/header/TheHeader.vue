@@ -72,9 +72,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/variables';
-@import '@/assets/scss/mixins';
-@import '@/assets/scss/extensions';
 .header {
   padding: 24px 0;
   @extend %bg-primary-default;
