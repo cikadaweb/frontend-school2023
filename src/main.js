@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import '@/helpers/register-assets'
+import '@/utils/register-assets'
+import '@/utils/register-components'
 
 Vue.config.productionTip = false
 
