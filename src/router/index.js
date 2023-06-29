@@ -5,6 +5,10 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    redirect: '/projects'
+  },
+  {
     path: '/projects',
     component: () => import('@/layouts/DefaultLayout.vue'),
     alias: '/',
