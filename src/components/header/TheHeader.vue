@@ -7,23 +7,18 @@
             <router-link class="header__link" :to="link.url">{{ link.name }}</router-link>
           </li>
         </ul>
-        <div class="header__profile" @click="openProfileMenu">
+        <div class="header__profile" @click="toggleProfileMenu">
           <img
             class="user-avatar"
             src="@/assets/img/avatar.png"
             alt="profile-img"
           />
-          <div class="header__arrow-icon" :class="isShowProfileMenu ? 'header__arrow-icon_active' : ''">
-            <SVGIcon id="#arrow-down" width="14" height="8" />
+          <div class="header__arrow-icon" :class="isShowDropdown ? 'header__arrow-icon_active' : ''">
+            <v-svgicon id="#arrow-down" width="14" height="8" />
           </div>
 
-          <div class="header__dropdown-menu" :class="isShowProfileMenu ? 'header__dropdown-menu_active' : ''">
-            <ul class="header__dropdown-list">
-              <li v-for="link in profileLinks" :key="link.id">
-                <router-link class="header__dropdown-link" :to="link.url">{{ link.name }}</router-link>
-              </li>
-            </ul>
-          </div>
+          <DropdownButton :isShowDropdown="isShowDropdown" :items="dropdownList"/>
+
         </div>
       </nav>
     </div>
@@ -31,12 +26,14 @@
 </template>
 
 <script>
-import SVGIcon from '@/components/svgIcon/SVGIcon.vue'
+import DropdownButton from '@/components/dropdown-button/DropdownButton.vue'
+import VSvgicon from '../ui-elements/svg-icon/v-svgicon.vue'
 
 export default {
-  name: 'HomePage',
+  name: 'TheHeader',
   components: {
-    SVGIcon
+    DropdownButton,
+    VSvgicon
   },
   data () {
     return {
@@ -57,7 +54,7 @@ export default {
           url: '/users'
         }
       ],
-      profileLinks: [
+      dropdownList: [
         {
           id: 1,
           name: 'Профиль',
@@ -69,12 +66,12 @@ export default {
           url: '/'
         }
       ],
-      isShowProfileMenu: false
+      isShowDropdown: false
     }
   },
   methods: {
-    openProfileMenu () {
-      this.isShowProfileMenu = !this.isShowProfileMenu
+    toggleProfileMenu () {
+      this.isShowDropdown = !this.isShowDropdown
     }
   }
 }
