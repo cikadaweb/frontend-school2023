@@ -1,6 +1,6 @@
 <template>
   <div class="placeholder">
-    <div class="container placeholder__container">
+    <div class="placeholder__container">
       <div class="placeholder__content">
         <slot />
       </div>
@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .placeholder {
   padding: 24px 0;
   height: 100vh;
@@ -31,14 +31,6 @@ export default {
   justify-content: center;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  @extend %btn-border;
-}
-
-.placeholder__button {
-  @include font(14px, 400, 19px);
-  @extend %bg-primary-default;
-  @extend %btn-border;
-  @extend %btn-padding;
-  margin-top: 10px;
+  border-radius: $btn-radius;
 }
 </style>
