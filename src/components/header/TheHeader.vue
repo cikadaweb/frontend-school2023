@@ -14,7 +14,7 @@
             alt="profile-img"
           />
           <div class="header__arrow-icon" :class="isShowDropdown ? 'header__arrow-icon_active' : ''">
-            <v-svgicon id="#arrow-down" width="14" height="8" />
+            <AppSVGIcon id="#arrow-down" width="14" height="8" />
           </div>
 
           <DropdownButton :isShowDropdown="isShowDropdown" :items="dropdownList"/>
@@ -27,13 +27,12 @@
 
 <script>
 import DropdownButton from '@/components/dropdown-button/DropdownButton.vue'
-import VSvgicon from '../ui-elements/svg-icon/v-svgicon.vue'
+import AppSVGIcon from '@/components/ui-elements/svg-icon/AppSGVIcon.vue'
 
 export default {
   name: 'TheHeader',
   components: {
-    DropdownButton,
-    VSvgicon
+    DropdownButton, AppSVGIcon
   },
   data () {
     return {
@@ -80,7 +79,8 @@ export default {
 <style lang="scss" scoped>
 .header {
   padding: 24px 0;
-  @extend %bg-primary-default;
+  background-color: #1F75CB;
+  color: #FFFFFF;
 }
 
 .header__nav {
@@ -100,7 +100,7 @@ export default {
   color: $secondary;
   border: 1px solid $secondary;
   padding: 12px 16px;
-  @extend %btn-border;
+  border-radius: $btn-radius;
   transition: all 0.3s ease 0s;
 
   &:hover {
@@ -121,13 +121,14 @@ export default {
   gap: 8px;
   padding: 9px 16px;
   border: 1px solid transparent;
-  @extend %btn-border;
+  border-radius: $btn-radius;
   transition: all 0.3s ease 0s;
   &:hover {
     border: 1px solid $secondary;
   }
   &:active {
-    @extend %bg-secondary-default;
+    background-color: #FFFFFF;
+    color: #1C1C1C;
     .header__arrow-icon {
       color: #DCDCDE;
     }
@@ -135,7 +136,8 @@ export default {
 }
 
 .header__profile_active {
-  @extend %bg-secondary-default;
+  background-color: #FFFFFF;
+  color: #1C1C1C;
   .header__arrow-icon {
     color: #DCDCDE;
   }
