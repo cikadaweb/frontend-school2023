@@ -20,7 +20,10 @@
         </div>
       </div>
 
-      <v-kebab-btn @toggle-project-item="toggleProjectItem"/>
+      <AppKebabBtn
+        :class="isShowDropdownMenu ? 'kebab-btn_active' : ''"
+        @toggle-project-item="toggleProjectItem"
+      />
 
       <div
         class="kebab-btn__dropdown-menu"
@@ -41,9 +44,9 @@
 </template>
 
 <script>
-import vKebabBtn from '../ui-elements/buttons/v-kebab-btn.vue'
+
 export default {
-  components: { vKebabBtn },
+  components: {},
   name: 'AppProjectItem',
   props: {
     item: {
@@ -94,6 +97,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .project-item {
   color: $primary;
   border-bottom: 1px solid #1C1C1C;
