@@ -1,15 +1,11 @@
 <template>
   <div class="kebab-btn" @click="toggleProjectItemMenu">
-    <v-svgicon id="#dots" width="24" height="24" />
+    <AppSVGIcon id="#dots" width="24" height="24" />
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
   methods: {
     toggleProjectItemMenu () {
       this.$emit('toggle-project-item')
@@ -18,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .kebab-btn {
   visibility: hidden;
   opacity: 0;
@@ -32,20 +28,23 @@ export default {
   align-items: center;
   width: 42px;
   height: 42px;
-  @extend %bg-secondary-default;
+  background-color: #FFFFFF;
+  color: #1C1C1C;
   border: 1px solid $border-default;
-  @extend %btn-border;
+  border-radius: $btn-radius;
   margin-right: 16px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
 
   &:hover {
-   @extend %bg-secondary-hover;
+    background-color: #ECECEF;
+    color: #1C1C1C;
     border: 1px solid $border-hover;
   }
 
   &:active {
-    @extend %bg-secondary-active;
+    background-color: #DCDCDE;
+    color: #1C1C1C;
     border: 1px solid $border-active;
   }
 }
@@ -54,7 +53,8 @@ export default {
   visibility: visible;
   opacity: 1;
   pointer-events: all;
-  @extend %bg-secondary-active;
+  background-color: #DCDCDE;
+  color: #1C1C1C;
   border: 1px solid $border-active;
 }
 </style>
