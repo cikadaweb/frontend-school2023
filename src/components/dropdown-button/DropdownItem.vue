@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .dropdown-item__link {
   @include font(14px, 400, 19px);
   display: block;
