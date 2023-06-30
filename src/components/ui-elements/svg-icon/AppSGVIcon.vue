@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'SVGIcon',
+  name: 'AppSVGIcon',
   props: {
     id: {
       type: String,
