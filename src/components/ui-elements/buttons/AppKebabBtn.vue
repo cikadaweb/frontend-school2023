@@ -5,7 +5,13 @@
 </template>
 
 <script>
+import AppSVGIcon from '@/components/ui-elements/svg-icon/AppSGVIcon.vue'
+
 export default {
+  name: 'AppKebabBtn',
+  components: {
+    AppSVGIcon
+  },
   methods: {
     toggleProjectItemMenu () {
       this.$emit('toggle-project-item')
