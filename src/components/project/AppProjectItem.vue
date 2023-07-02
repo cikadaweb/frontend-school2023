@@ -99,8 +99,8 @@ export default {
 <style lang="scss">
 
 .project-item {
-  color: $primary;
-  border-bottom: 1px solid #1C1C1C;
+  color: $font-primary-default;
+  border-bottom: 1px solid $border-active;
 }
 
 .project-item_active {
@@ -148,7 +148,7 @@ export default {
 .project-item__text {
   @include font(14px, 400, 19px);
   white-space: nowrap;
-  color: $disabled;
+  color: $font-disabled;
 }
 
 .project-item__title {
@@ -191,11 +191,11 @@ export default {
 .kebab-btn__dropdown-link {
   @include font(14px, 400, 19px);
   display: block;
-  color: $primary;
+  color: $font-primary-default;
   padding: 8px 16px;
 }
 
 .kebab-btn__dropdown-link_red {
-  color: $error;
+  color: $font-error;
 }
 </style>
