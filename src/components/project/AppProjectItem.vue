@@ -20,11 +20,17 @@
         </div>
       </div>
 
-      <AppKebabBtn
+      <div
+        class="kebab-btn"
         :class="isShowDropdownMenu ? 'kebab-btn_active' : ''"
-        @toggle-project-item="toggleProjectItem"
-      />
-
+      >
+        <AppButton
+          color="secondary"
+          type="button"
+          icon="dots"
+          @click-on-button="clickOnButton"
+        />
+      </div>
       <div
         class="kebab-btn__dropdown-menu"
         :class="isShowDropdownMenu ? 'kebab-btn__dropdown-menu_active' : ''"
@@ -75,7 +81,7 @@ export default {
         this.isShowKebabBtn = false
       }
     },
-    toggleProjectItem () {
+    clickOnButton () {
       this.isShowDropdownMenu = !this.isShowDropdownMenu
     },
     handleOutsideClick (event) {
@@ -157,6 +163,23 @@ export default {
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.kebab-btn {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  position: absolute;
+  top: 10px;
+  right: 0;
+  transition: all 0.3s ease 0s;
+}
+
+.kebab-btn_active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .kebab-btn__dropdown-menu {
