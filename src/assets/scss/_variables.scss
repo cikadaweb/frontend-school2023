@@ -1,16 +1,27 @@
-$primary: #1C1C1C;
-$secondary: #FFFFFF;
-$disabled:  #8E8E8E;
-$error: #EE4222;
-$bronze: #9E6955;
-$placeholder: #D9D9D9;
+$bg-primary-default: rgba(31, 117, 203, 1); // #1F75CB
+$bg-primary-hover: rgba(16, 104, 191, 1); // #1068BF
+$bg-primary-active: rgba(11, 92, 173, 1); // #0B5CAD
+$bg-secondary: rgba(255, 255, 255, 1); // #FFFFFF
+$bg-secondary-hover: rgba(236, 236, 239, 1); // #ECECEF
+$bg-secondary-active: rgba(220, 220, 222, 1); // #DCDCDE
+$bg-disabled: rgba(220, 220, 222, 1); // #DCDCDE
 
 $border-default: rgba(0, 0, 0, 0.15);
 $border-hover: rgba(18, 19, 22, 0.5);
-$border-active: rgba(28, 28, 28, 1);
-$border-error: rgba(238, 66, 34, 1);
+$border-active: rgba(28, 28, 28, 1); // #1C1C1C
+$border-error: rgba(238, 66, 34, 1); // #EE4222
 $border-disabled: rgba(0, 0, 0, 0.15);
-$border-bronze: rgba(158, 105, 85, 1);
+$border-bronze: rgba(158, 105, 85, 1); // #9E6955
+$border-secondary: rgba(255, 255, 255, 1); // #FFFFFF
+
+$font-primary-default: rgba(28, 28, 28, 1); // #1C1C1C
+$font-secondary: rgba(255, 255, 255, 1); // #FFFFFF
+$font-secondary-active: rgba(220, 220, 222, 1); // #DCDCDE
+$font-disabled: rgba(142, 142, 142, 1); // #8E8E8E
+$font-error: rgba(238, 66, 34, 1); // #EE4222
+$font-placeholder: rgba(217, 217, 217, 1); // #D9D9D9 
 
 $btn-padding: 12px 16px;
+$btn-padding-icon: 9px;
+
 $btn-radius: 4px;
