@@ -14,7 +14,7 @@
             alt="profile-img"
           />
           <div class="header__arrow-icon" :class="isShowDropdown ? 'header__arrow-icon_active' : ''">
-            <AppSVGIcon id="#arrow-down" width="14" height="8" />
+            <AppIcon id="#drop-down" width="24" height="24" />
           </div>
 
           <DropdownButton :isShowDropdown="isShowDropdown" :items="dropdownList"/>
@@ -27,12 +27,11 @@
 
 <script>
 import DropdownButton from '@/components/dropdown-button/DropdownButton.vue'
-import AppSVGIcon from '@/components/ui-elements/svg-icon/AppSGVIcon.vue'
 
 export default {
   name: 'TheHeader',
   components: {
-    DropdownButton, AppSVGIcon
+    DropdownButton
   },
   data () {
     return {
@@ -79,8 +78,8 @@ export default {
 <style lang="scss" scoped>
 .header {
   padding: 24px 0;
-  background-color: #1F75CB;
-  color: #FFFFFF;
+  background-color: $bg-primary-default;
+  color: $font-secondary;
 }
 
 .header__nav {
@@ -97,21 +96,21 @@ export default {
 
 .header__link {
   @include font(14px, 400, 19px);
-  color: $secondary;
-  border: 1px solid $secondary;
+  color: $font-secondary;
+  border: 1px solid $border-secondary;
   padding: 12px 16px;
   border-radius: $btn-radius;
   transition: all 0.3s ease 0s;
 
   &:hover {
-    color: $primary;
-    background: $secondary;
+    color: $font-primary-default;
+    background: $bg-secondary;
   }
 }
 
 .header__link_active {
-  color: $primary;
-  background: $secondary;
+  color: $font-primary-default;
+  background: $bg-secondary;
 }
 
 .header__profile {
@@ -124,22 +123,22 @@ export default {
   border-radius: $btn-radius;
   transition: all 0.3s ease 0s;
   &:hover {
-    border: 1px solid $secondary;
+    border: 1px solid $border-secondary;
   }
   &:active {
-    background-color: #FFFFFF;
-    color: #1C1C1C;
+    background-color: $bg-secondary;
+    color: $font-primary-default;
     .header__arrow-icon {
-      color: #DCDCDE;
+      color: $font-secondary-active;
     }
   }
 }
 
 .header__profile_active {
-  background-color: #FFFFFF;
-  color: #1C1C1C;
+  background-color: $bg-secondary;
+  color: $font-primary-default;
   .header__arrow-icon {
-    color: #DCDCDE;
+    color: $font-secondary-active;
   }
 }
 
@@ -155,7 +154,7 @@ export default {
   align-items: center;
   width: 24px;
   height: 24px;
-  color: $secondary;
+  color: $font-secondary;
   transition: all 0.3s ease 0s;
 }
 
@@ -168,7 +167,7 @@ export default {
   opacity: 0;
   visibility: hidden;
   display: none;
-  background: #FFFFFF;
+  background: $bg-secondary;
   padding: 8px 0;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   top: 43px;
@@ -202,7 +201,7 @@ export default {
 .header__dropdown-link {
   @include font(14px, 400, 19px);
   display: block;
-  color: $primary;
+  color: $font-primary-default;
   padding: 8px 16px;
 }
 </style>
