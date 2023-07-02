@@ -20,7 +20,7 @@ export default {
 .dropdown-item__link {
   @include font(14px, 400, 19px);
   display: block;
-  color: $primary;
+  color: $font-primary-default;
   padding: 8px 16px;
 }
 </style>
