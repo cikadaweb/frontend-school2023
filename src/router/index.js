@@ -11,7 +11,6 @@ const routes = [
   {
     path: '/projects',
     component: () => import('@/layouts/DefaultLayout.vue'),
-    alias: '/',
     children: [
       {
         path: '',
@@ -39,6 +38,17 @@ const routes = [
         path: '',
         name: 'UsersPage',
         component: () => import('@/views/UsersPage.vue')
+      }
+    ]
+  },
+  {
+    path: '/profile',
+    component: () => import('@/layouts/DefaultLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'ProfilePage',
+        component: () => import('@/views/ProfilePage.vue')
       }
     ]
   }
