@@ -1,6 +1,10 @@
 <template>
   <li class="dropdown-item">
-    <router-link class="dropdown-item__link" :to="link.url">{{ link.name }}</router-link>
+    <router-link
+      class="dropdown-item__link"
+      :class="color"
+      :to="link.url"
+    >{{ link.name }}</router-link>
   </li>
 </template>
 
@@ -10,6 +14,10 @@ export default {
     link: {
       type: Object,
       required: true
+    },
+    color: {
+      type: String,
+      required: false
     }
   }
 }
@@ -22,5 +30,9 @@ export default {
   display: block;
   color: $font-primary-default;
   padding: 8px 16px;
+}
+
+.dropdown-item__link_red {
+  color: $font-error;
 }
 </style>

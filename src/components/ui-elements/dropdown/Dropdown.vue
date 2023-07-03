@@ -1,13 +1,15 @@
 <template>
-  <div class="dropdown-button" :class="isShowDropdown ? 'dropdown-button_active' : ''">
+  <div
+    class="dropdown-button"
+    :class="isShowDropdown ? 'dropdown-button_active' : ''"
+  >
     <ul class="dropdown-button__list">
-      <DropdownItem v-for="link in items" :key="link.id" :link="link" />
+      <DropdownItem v-for="link in items" :key="link.id" :link="link" :color="link.color"/>
     </ul>
   </div>
 </template>
 
 <script>
-import DropdownItem from '@/components/dropdown-button/DropdownItem.vue'
 
 export default {
   name: 'DropdownButton',
@@ -20,9 +22,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  components: {
-    DropdownItem
   }
 }
 </script>
@@ -30,23 +29,24 @@ export default {
 <style lang="scss">
 
 .dropdown-button {
-  position: absolute;
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   display: none;
+
   background: $bg-secondary;
   padding: 8px 0;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  top: 43px;
-  right: 0;
   animation: menuFadeIn 0.3s ease 0.6s forwards;
 }
 
 .dropdown-button_active {
-  z-index: 5;
-  display: flex;
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+
+  display: flex;
+  z-index: 5;
   animation: menuFadeIn 0.3s ease forwards;
 }
 
