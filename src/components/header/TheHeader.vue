@@ -7,7 +7,7 @@
             <router-link class="header__link" :to="link.url">{{ link.name }}</router-link>
           </li>
         </ul>
-        <div class="header__profile" @click="toggleProfileMenu" ref="profileButton">
+        <div class="header__profile" :class="isActiveProfile" @click="toggleProfileMenu" ref="profileButton">
           <img
             class="user-avatar"
             src="@/assets/img/avatar.png"
@@ -88,6 +88,14 @@ export default {
       ) {
         this.isShowDropdown = false
       }
+    }
+  },
+  computed: {
+    isActiveProfile () {
+      if (this.isShowDropdown) {
+        return 'header__profile_active'
+      }
+      return ''
     }
   }
 }
