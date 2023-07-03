@@ -16,7 +16,6 @@ export default {
 
 <style lang="scss" scoped>
 .placeholder {
-  padding: 24px 0;
   height: 100vh;
 }
 
