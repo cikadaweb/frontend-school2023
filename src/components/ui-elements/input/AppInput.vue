@@ -64,6 +64,7 @@ export default {
 .input__text {
   @include input-reset;
   outline: none;
+  transition: all 0.3s ease 0s;
 }
 .input__text {
   padding: 10px 12px;
@@ -75,11 +76,6 @@ export default {
   color: $font-primary-default;
   border: 1px solid $border-default;
 
-  // &:hover {
-  //   background: $bg-secondary;
-  //   color: $font-placeholder;
-  //   border: 1px solid $border-hover;
-  // }
   &:active {
     background: $bg-secondary;
     color: $font-primary-default;
@@ -91,6 +87,18 @@ export default {
     border: 1px solid $border-disabled;
   }
 }
+
+.input_empty {
+  background: $bg-secondary;
+  color: $font-placeholder;
+  border: 1px solid $border-default;
+  &:hover {
+    background: $bg-secondary;
+    color: $font-placeholder;
+    border: 1px solid $border-hover;
+  }
+}
+
 .input_error {
   background: $bg-secondary;
   color: $font-primary-default;
