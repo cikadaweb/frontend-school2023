@@ -17,7 +17,12 @@
             <AppIcon id="#drop-down" width="24" height="24" />
           </div>
 
-          <DropdownButton :isShowDropdown="isShowDropdown" :items="dropdownList" ref="profileDropdown"/>
+          <Dropdown
+            class="header__dropdown"
+            :isShowDropdown="isShowDropdown"
+            :items="dropdownList"
+            ref="profileDropdown"
+            />
 
         </div>
       </nav>
@@ -26,13 +31,9 @@
 </template>
 
 <script>
-import DropdownButton from '@/components/dropdown-button/DropdownButton.vue'
 
 export default {
   name: 'TheHeader',
-  components: {
-    DropdownButton
-  },
   mounted () {
     document.addEventListener('click', this.handleOutsideClick)
   },
@@ -188,46 +189,9 @@ export default {
   transform: rotate(180deg);
 }
 
-.header__dropdown-menu {
+.header__dropdown {
   position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-  background: $bg-secondary;
-  padding: 8px 0;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  top: 43px;
+  top: 44px;
   right: 0;
-  animation: menuFadeIn 0.3s ease 0.6s forwards;
-}
-
-.header__dropdown-menu_active {
-  z-index: 5;
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-  animation: menuFadeIn 0.3s ease forwards;
-}
-
-@keyframes menuFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.header__dropdown-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.header__dropdown-link {
-  @include font(14px, 400, 19px);
-  display: block;
-  color: $font-primary-default;
-  padding: 8px 16px;
 }
 </style>
