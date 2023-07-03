@@ -22,7 +22,7 @@
 
       <div
         class="kebab-btn"
-        :class="isShowDropdownMenu ? 'kebab-btn_active' : ''"
+        :class="isShowDropdown ? 'kebab-btn_active' : ''"
       >
         <AppButton
           color="secondary"
@@ -31,20 +31,14 @@
           @click-on-button="clickOnButton"
         />
       </div>
-      <div
-        class="kebab-btn__dropdown-menu"
-        :class="isShowDropdownMenu ? 'kebab-btn__dropdown-menu_active' : ''"
-        ref="dropdownMenu"
-      >
-        <ul class="kebab-btn__dropdown-list">
-          <li>
-            <a href="#" class="kebab-btn__dropdown-link">Редактировать</a>
-          </li>
-          <li>
-            <a href="#" class="kebab-btn__dropdown-link kebab-btn__dropdown-link_red">Удалить</a>
-          </li>
-        </ul>
-      </div>
+
+      <Dropdown
+        class="project-item__dropdown"
+        :isShowDropdown="isShowDropdown"
+        :items="dropdownList"
+        ref="projectDropdown"
+      />
+
     </div>
   </div>
 </template>
@@ -68,7 +62,20 @@ export default {
   data () {
     return {
       isShowKebabBtn: false,
-      isShowDropdownMenu: false
+      isShowDropdown: false,
+      dropdownList: [
+        {
+          id: 1,
+          name: 'Редактировать',
+          url: '/'
+        },
+        {
+          id: 2,
+          name: 'Удалить',
+          url: '/',
+          color: 'dropdown-item__link_red'
+        }
+      ]
     }
   },
   methods: {
@@ -76,24 +83,24 @@ export default {
       this.isShowKebabBtn = true
     },
     closeKebabBtn () {
-      if (!this.isShowDropdownMenu) {
+      if (!this.isShowDropdown) {
         this.isShowKebabBtn = false
       }
     },
     clickOnButton () {
-      this.isShowDropdownMenu = !this.isShowDropdownMenu
+      this.isShowDropdown = !this.isShowDropdown
     },
     handleOutsideClick (event) {
-      const dropdownMenu = this.$refs.dropdownMenu
+      const projectDropdown = this.$refs.projectDropdown.$el
       const projectItem = this.$refs.projectItem
 
       if (
-        dropdownMenu &&
+        projectDropdown &&
         projectItem &&
-        !dropdownMenu.contains(event.target) &&
+        !projectDropdown.contains(event.target) &&
         !projectItem.contains(event.target)
       ) {
-        this.isShowDropdownMenu = false
+        this.isShowDropdown = false
         this.isShowKebabBtn = false
       }
     }
@@ -181,43 +188,9 @@ export default {
   pointer-events: all;
 }
 
-.kebab-btn__dropdown-menu {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-
+.project-item__dropdown {
   position: absolute;
-  background: #FFFFFF;
-  padding: 8px 0;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   top: 54px;
   right: 0;
-}
-
-.kebab-btn__dropdown-menu_active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: all;
-
-  z-index: 5;
-  display: flex;
-}
-
-.kebab-btn__dropdown-list {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-}
-
-.kebab-btn__dropdown-link {
-  @include font(14px, 400, 19px);
-  display: block;
-  color: $font-primary-default;
-  padding: 8px 16px;
-}
-
-.kebab-btn__dropdown-link_red {
-  color: $font-error;
 }
 </style>
