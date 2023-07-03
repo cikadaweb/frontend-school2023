@@ -20,7 +20,7 @@
         <div>#1</div>
         <div class="task-item__text">{{ item.author }} {{ item.dateCreated }}</div>
 
-        <div class="task-badge">{{ item.status }}</div>
+        <AppBadge state="bronze">{{ item.status }}</AppBadge>
 
         <div class="task-item__text">
           {{ item.authorEdited }} {{ item.dateEdited }}
@@ -29,7 +29,7 @@
 
       <div
         class="kebab-btn"
-        :class="isShowDropdownMenu ? 'kebab-btn_active' : ''"
+        :class="isShowDropdown ? 'kebab-btn_active' : ''"
       >
         <AppButton
           color="secondary"
@@ -38,20 +38,13 @@
           @click-on-button="clickOnButton"
         />
       </div>
-      <div
-        class="kebab-btn__dropdown-menu"
-        :class="isShowDropdownMenu ? 'kebab-btn__dropdown-menu_active' : ''"
+
+      <Dropdown
+        class="task-item__dropdown"
+        :isShowDropdown="isShowDropdown"
+        :items="dropdownList"
         ref="dropdownMenu"
-      >
-        <ul class="kebab-btn__dropdown-list">
-          <li>
-            <a href="#" class="kebab-btn__dropdown-link">Редактировать</a>
-          </li>
-          <li>
-            <a href="#" class="kebab-btn__dropdown-link kebab-btn__dropdown-link_red">Удалить</a>
-          </li>
-        </ul>
-      </div>
+      />
     </div>
   </div>
 </template>
@@ -75,7 +68,20 @@ export default {
   data () {
     return {
       isShowKebabBtn: false,
-      isShowDropdownMenu: false
+      isShowDropdown: false,
+      dropdownList: [
+        {
+          id: 1,
+          name: 'Редактировать',
+          url: '/'
+        },
+        {
+          id: 2,
+          name: 'Удалить',
+          url: '/',
+          color: 'dropdown-item__link_red'
+        }
+      ]
     }
   },
   methods: {
@@ -83,15 +89,15 @@ export default {
       this.isShowKebabBtn = true
     },
     closeKebabBtn () {
-      if (!this.isShowDropdownMenu) {
+      if (!this.isShowDropdown) {
         this.isShowKebabBtn = false
       }
     },
     clickOnButton () {
-      this.isShowDropdownMenu = !this.isShowDropdownMenu
+      this.isShowDropdown = !this.isShowDropdown
     },
     handleOutsideClick (event) {
-      const dropdownMenu = this.$refs.dropdownMenu
+      const dropdownMenu = this.$refs.dropdownMenu.$el
       const taskItem = this.$refs.taskItem
       if (
         dropdownMenu &&
@@ -99,7 +105,7 @@ export default {
         !dropdownMenu.contains(event.target) &&
         !taskItem.contains(event.target)
       ) {
-        this.isShowDropdownMenu = false
+        this.isShowDropdown = false
         this.isShowKebabBtn = false
       }
     }
@@ -152,13 +158,6 @@ export default {
   transition: all 0.3s ease 0s;
 }
 
-.task-badge {
-  padding: 0 8px;
-  background-color: $bg-bronze;
-  color: $font-secondary;
-  border-radius: $btn-radius;
-}
-
 .task-item__text {
   @include font(14px, 400, 19px);
   white-space: nowrap;
@@ -171,5 +170,11 @@ export default {
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.task-item__dropdown {
+  position: absolute;
+  top: 54px;
+  right: 0;
 }
 </style>
