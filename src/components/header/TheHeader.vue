@@ -7,7 +7,7 @@
             <router-link class="header__link" :to="link.url">{{ link.name }}</router-link>
           </li>
         </ul>
-        <div class="header__profile" @click="toggleProfileMenu">
+        <div class="header__profile" @click="toggleProfileMenu" ref="profileButton">
           <img
             class="user-avatar"
             src="@/assets/img/avatar.png"
@@ -17,7 +17,7 @@
             <AppIcon id="#drop-down" width="24" height="24" />
           </div>
 
-          <DropdownButton :isShowDropdown="isShowDropdown" :items="dropdownList"/>
+          <DropdownButton :isShowDropdown="isShowDropdown" :items="dropdownList" ref="profileDropdown"/>
 
         </div>
       </nav>
@@ -32,6 +32,12 @@ export default {
   name: 'TheHeader',
   components: {
     DropdownButton
+  },
+  mounted () {
+    document.addEventListener('click', this.handleOutsideClick)
+  },
+  beforeDestroy () {
+    document.removeEventListener('click', this.handleOutsideClick)
   },
   data () {
     return {
@@ -70,6 +76,18 @@ export default {
   methods: {
     toggleProfileMenu () {
       this.isShowDropdown = !this.isShowDropdown
+    },
+    handleOutsideClick (event) {
+      const profileButton = this.$refs.profileButton
+      const profileDropdown = this.$refs.profileDropdown.$el
+      if (
+        profileButton &&
+        profileDropdown &&
+        !profileButton.contains(event.target) &&
+        !profileDropdown.contains(event.target)
+      ) {
+        this.isShowDropdown = false
+      }
     }
   }
 }
