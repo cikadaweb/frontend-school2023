@@ -30,6 +30,7 @@ export default {
   display: block;
   color: $font-primary-default;
   padding: 8px 16px;
+  white-space: nowrap;
 }
 
 .dropdown-item__link_red {
