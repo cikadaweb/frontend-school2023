@@ -13,7 +13,14 @@
         :value="value"
         :disabled="disabled"
         @input="updateValue($event)"
-        >
+      >
+      <AppIcon
+          v-if="icon"
+          class="input__icon"
+          :id="`#${icon}`"
+          width="24"
+          height="24"
+      />
     </label>
   </div>
 </template>
@@ -49,6 +56,10 @@ export default {
     state: {
       type: String,
       default: 'default'
+    },
+    icon: {
+      type: String,
+      required: false
     }
   },
   emits: ['input'],
@@ -61,14 +72,23 @@ export default {
 </script>
 
 <style lang="scss">
+.input__label {
+  position: relative;
+  display: inline-block;
+}
 .input__text {
   @include input-reset;
   outline: none;
   transition: all 0.3s ease 0s;
 }
 .input__text {
-  padding: 10px 12px;
+  padding: 10px 45px 10px 12px;
   border-radius: $btn-radius;
+}
+.input__icon {
+  position: absolute;
+  top: 9px;
+  right: 9px;
 }
 
 .input_default {

@@ -6,6 +6,7 @@
       placeholder="Текст..."
       width="100%"
       v-model="formData.searchField"
+      icon="search"
       :state="searchFieldClass"
     />
   </form>
