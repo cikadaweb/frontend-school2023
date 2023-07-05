@@ -20,14 +20,12 @@
         </div>
       </div>
 
-      <div
-        class="kebab-btn"
-        :class="isShowDropdown ? 'kebab-btn_active' : ''"
-      >
+      <div class="kebab-btn">
         <AppButton
           color="secondary"
           type="button"
           icon="dots"
+          :is-active="isShowDropdown"
           @click-on-button="clickOnButton"
         />
       </div>
@@ -172,6 +170,7 @@ export default {
 }
 
 .kebab-btn {
+  // default
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
@@ -180,12 +179,6 @@ export default {
   top: 10px;
   right: 0;
   transition: all 0.3s ease 0s;
-}
-
-.kebab-btn_active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: all;
 }
 
 .project-item__dropdown {

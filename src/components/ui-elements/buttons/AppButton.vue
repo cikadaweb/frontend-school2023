@@ -3,6 +3,7 @@
     :class="[
       'btn',
       `btn_${color}`,
+      isActive ? `btn_${color}_active` : '',
       `${icon ? 'btn_icon' : ''}`
     ]"
     :disabled="disabled"
@@ -36,6 +37,10 @@ export default {
     icon: {
       type: String,
       required: false
+    },
+    isActive: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['click-on-button'],
@@ -72,6 +77,10 @@ export default {
     background-color: $bg-disabled;
     color: $font-disabled;
   }
+  &_active {
+    background-color: $bg-primary-active;
+    color: $font-secondary;
+  }
 }
 
 .btn_secondary {
@@ -92,6 +101,11 @@ export default {
     background-color: $bg-secondary;
     color: $font-disabled;
     border: 1px solid $border-disabled;
+  }
+  &_active {
+    background-color: $bg-secondary-active;
+    color: $font-primary-default;
+    border: 1px solid $border-active;
   }
 }
 

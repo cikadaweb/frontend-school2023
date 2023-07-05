@@ -19,6 +19,7 @@
                 type="button"
                 icon="dots"
                 @click-on-button="clickOnButtonProfile"
+                :is-active="isShowDropdown"
                 ref="profileSettingsBtn"
               />
               <Dropdown

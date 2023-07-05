@@ -12,6 +12,7 @@
       color="secondary"
       type="button"
       icon="dots"
+      :is-active="isShowDropdown"
       @click-on-button="clickOnButtonAvatar"
     />
     <Dropdown

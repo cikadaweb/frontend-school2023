@@ -27,14 +27,12 @@
         </div>
       </div>
 
-      <div
-        class="kebab-btn"
-        :class="isShowDropdown ? 'kebab-btn_active' : ''"
-      >
+      <div class="kebab-btn">
         <AppButton
           color="secondary"
           type="button"
           icon="dots"
+          :is-active="isShowDropdown"
           @click-on-button="clickOnButton"
         />
       </div>
