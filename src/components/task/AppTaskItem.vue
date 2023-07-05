@@ -174,7 +174,7 @@ export default {
 
 .task-item__dropdown {
   position: absolute;
-  top: 54px;
+  top: 56px;
   right: 0;
 }
 </style>
