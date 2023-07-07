@@ -48,12 +48,12 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'LoginPage',
-  mounted () {
-    const query = this.$route.query
-    if (query.message === 'login') {
-      this.errorText = 'Неправильный логин или пароль.'
-    }
-  },
+  // mounted () {
+  //   const query = this.$route.query
+  //   if (query.message === 'login') {
+  //     this.errorText = 'Неправильный логин или пароль.'
+  //   }
+  // },
   data () {
     return {
       login: '',
@@ -63,11 +63,16 @@ export default {
     }
   },
   methods: {
-    submitForm () {
-      this.loginUser({
-        login: this.login,
-        password: this.password
-      })
+    async submitForm () {
+      try {
+        await this.loginUser({
+          login: this.login,
+          password: this.password
+        })
+        this.$router.push('/projects')
+      } catch (error) {
+        this.errorText = 'Неправильный логин или пароль.'
+      }
     },
     clickOnIcon (event) {
       if (event.target.classList.contains('input__icon')) {
