@@ -1,6 +1,5 @@
 import { AuthApi } from '@/api/AuthApi'
 import { DefaultAPIInstance } from '@/api'
-import router from '@/router'
 
 export const mutation = {
   SET_TOKEN: 'SET_TOKEN'
@@ -21,9 +20,9 @@ export default {
         commit(mutation.SET_TOKEN, data.token)
         localStorage.setItem('token', data.token)
         DefaultAPIInstance.defaults.headers.Authorization = `Bearer ${state.credentials.token}`
-        router.push('/')
+        return Promise.resolve()
       } catch (error) {
-        router.push('/login/?message=login')
+        return Promise.reject(error)
       }
     }
   },
