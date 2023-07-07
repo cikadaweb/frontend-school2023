@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+const authGuard = function (to, from, next) {
+  const isUserLoggedIn = localStorage.getItem('token')
+  if (!isUserLoggedIn) next({ name: 'LoginPage' })
+  else next()
+}
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,6 +16,7 @@ const routes = [
   },
   {
     path: '/projects',
+    beforeEnter: authGuard,
     component: () => import('@/layouts/DefaultLayout.vue'),
     children: [
       {
@@ -21,6 +28,7 @@ const routes = [
   },
   {
     path: '/tasks',
+    beforeEnter: authGuard,
     component: () => import('@/layouts/DefaultLayout.vue'),
     children: [
       {
@@ -32,6 +40,7 @@ const routes = [
   },
   {
     path: '/users',
+    beforeEnter: authGuard,
     component: () => import('@/layouts/DefaultLayout.vue'),
     children: [
       {
@@ -43,6 +52,7 @@ const routes = [
   },
   {
     path: '/profile',
+    beforeEnter: authGuard,
     component: () => import('@/layouts/DefaultLayout.vue'),
     children: [
       {
