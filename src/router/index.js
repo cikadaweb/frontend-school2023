@@ -51,6 +51,17 @@ const routes = [
         component: () => import('@/views/ProfilePage.vue')
       }
     ]
+  },
+  {
+    path: '/login',
+    component: () => import('@/layouts/EmptyLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'LoginPage',
+        component: () => import('@/views/LoginPage.vue')
+      }
+    ]
   }
 ]
 
