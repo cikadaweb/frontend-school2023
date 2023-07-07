@@ -48,12 +48,6 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'LoginPage',
-  // mounted () {
-  //   const query = this.$route.query
-  //   if (query.message === 'login') {
-  //     this.errorText = 'Неправильный логин или пароль.'
-  //   }
-  // },
   data () {
     return {
       login: '',
