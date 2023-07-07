@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import auth from '@/store/auth'
 import user from '@/store/user'
 import project from '@/store/project'
 import task from '@/store/task'
@@ -11,5 +12,5 @@ export default new Vuex.Store({
   getters: {},
   mutations: {},
   actions: {},
-  modules: { user, project, task }
+  modules: { auth, user, project, task }
 })
