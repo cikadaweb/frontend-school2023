@@ -1,5 +1,5 @@
 <template>
-  <svg :width="width" :height="height">
+  <svg :width="width" :height="height" @click="clickOnIcon">
     <use :xlink:href="id"/>
   </svg>
 </template>
@@ -7,6 +7,7 @@
 <script>
 export default {
   name: 'AppIcon',
+  emits: ['click-on-icon'],
   props: {
     id: {
       type: String,
@@ -19,6 +20,11 @@ export default {
     height: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    clickOnIcon () {
+      this.$emit('click-on-icon')
     }
   }
 }
