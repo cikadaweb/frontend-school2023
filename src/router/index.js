@@ -35,6 +35,11 @@ const routes = [
         path: '',
         name: 'TasksPage',
         component: () => import('@/views/TasksPage.vue')
+      },
+      {
+        path: 'create',
+        name: 'CreateTaskPage',
+        component: () => import('@/views/CreateTaskPage.vue')
       }
     ]
   },
