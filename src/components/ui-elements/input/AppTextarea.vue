@@ -87,9 +87,15 @@ export default {
   color: $font-primary-default;
   border: 1px solid $border-default;
 
+  &:hover {
+    border: 1px solid $border-hover;
+  }
+
+  &:focus {
+    border: 1px solid $border-hover;
+  }
+
   &:active {
-    background: $bg-secondary;
-    color: $font-primary-default;
     border: 1px solid $border-active;
   }
 
@@ -98,17 +104,9 @@ export default {
     color: $font-disabled;
     border: 1px solid $border-disabled;
   }
-}
 
-.textarea_empty {
-  background: $bg-secondary;
-  color: $font-placeholder;
-  border: 1px solid $border-default;
-
-  &:hover {
-    background: $bg-secondary;
+  &::placeholder {
     color: $font-placeholder;
-    border: 1px solid $border-hover;
   }
 }
 
