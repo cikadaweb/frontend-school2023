@@ -77,14 +77,14 @@ export default {
 
 .input__text {
   @include input-reset;
-  outline: none;
-  transition: all 0.3s ease 0s;
 }
 
 .input__text {
   width: 100%;
-  padding: 10px 45px 10px 12px;
+  padding: 10px 12px;
   border-radius: $btn-radius;
+  outline: none;
+  transition: all 0.3s ease 0s;
 }
 
 .input__icon {
@@ -99,9 +99,15 @@ export default {
   color: $font-primary-default;
   border: 1px solid $border-default;
 
+  &:hover {
+    border: 1px solid $border-hover;
+  }
+
+  &:focus {
+    border: 1px solid $border-hover;
+  }
+
   &:active {
-    background: $bg-secondary;
-    color: $font-primary-default;
     border: 1px solid $border-active;
   }
 
@@ -110,17 +116,9 @@ export default {
     color: $font-disabled;
     border: 1px solid $border-disabled;
   }
-}
 
-.input_empty {
-  background: $bg-secondary;
-  color: $font-placeholder;
-  border: 1px solid $border-default;
-
-  &:hover {
-    background: $bg-secondary;
+  &::placeholder {
     color: $font-placeholder;
-    border: 1px solid $border-hover;
   }
 }
 
