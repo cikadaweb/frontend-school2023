@@ -27,6 +27,13 @@
 <script>
 export default {
   name: 'AppProfilePicture',
+  props: {
+    img: {
+      type: String,
+      required: true
+
+    }
+  },
   mounted () {
     document.addEventListener('click', this.handleOutsideClick)
   },
