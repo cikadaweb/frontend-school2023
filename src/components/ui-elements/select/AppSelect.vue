@@ -9,8 +9,8 @@
         v-if="clearIcon && isOptionChosen"
         class="select__icon select__icon_clear"
         id="#clear"
-        width="24"
-        height="24"
+        width="16"
+        height="16"
         @click-on-icon="clearSelect"
         ref="clearSelectBtn"
       />
