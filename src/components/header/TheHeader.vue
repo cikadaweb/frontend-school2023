@@ -62,11 +62,13 @@ export default {
       dropdownList: [
         {
           id: 1,
-          text: 'Профиль'
+          text: 'Профиль',
+          clickHandler: this.goToProfile
         },
         {
           id: 2,
-          text: 'Выход'
+          text: 'Выход',
+          clickHandler: this.goToExit
         }
       ],
       isShowDropdown: false
@@ -87,6 +89,14 @@ export default {
       ) {
         this.isShowDropdown = false
       }
+    },
+    goToProfile () {
+      if (this.$route.path !== '/profile') {
+        this.$router.push('/profile')
+      }
+    },
+    goToExit () {
+      console.log('Выйти из профиля')
     }
   },
   computed: {
