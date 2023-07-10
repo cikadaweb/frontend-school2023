@@ -6,7 +6,7 @@
           <AppFilterPanel />
         </div>
         <div class="projects-page__column">
-          <div v-if="projects.length !== 0">
+          <div v-if="projects">
             <AppProjectItem v-for="(project, idx) in projects" :key="idx" :item="project"/>
           </div>
 

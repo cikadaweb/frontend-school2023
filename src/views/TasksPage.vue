@@ -6,7 +6,7 @@
           <AppFilterPanel />
         </div>
         <div class="task-page__column">
-          <div v-if="tasks.length !== 0">
+          <div v-if="tasks">
             <AppTaskItem v-for="(task, idx) in tasks" :key="idx" :item="task" />
           </div>
 
