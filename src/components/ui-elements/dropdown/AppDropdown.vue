@@ -4,7 +4,9 @@
     :class="isShowDropdown ? 'dropdown-button_active' : ''"
   >
     <ul class="dropdown-button__list">
-      <DropdownItem v-for="link in items" :key="link.id" :link="link" :color="link.color"/>
+      <AppDropdownItem v-for="item in items" :key="item.id" >
+        {{ item.text }}
+      </AppDropdownItem>
     </ul>
   </div>
 </template>
@@ -12,7 +14,7 @@
 <script>
 
 export default {
-  name: 'DropdownButton',
+  name: 'AppDropdown',
   props: {
     isShowDropdown: {
       type: Boolean,
