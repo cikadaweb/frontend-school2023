@@ -73,7 +73,7 @@
               color="primary"
               type="button"
               label="Создать задачу"
-              @click-on-button="createTask"
+              @click-on-button="submitHandler"
             />
           </div>
         </div>
@@ -113,8 +113,13 @@ export default {
     clearSelectedExecutor () {
       this.selectedExecutor = 'Не назначен'
     },
-    createTask () {
-      console.log('Create task')
+    submitHandler () {
+      console.log({
+        taskName: this.taskName,
+        taskDescription: this.taskDescription,
+        selectedProject: this.selectedProject,
+        selectedExecutor: this.selectedExecutor
+      })
     },
     cancelClick () {
       console.log('Cancel click')
