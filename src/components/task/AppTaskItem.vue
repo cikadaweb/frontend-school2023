@@ -20,7 +20,7 @@
         <div>#1</div>
         <div class="task-item__text">{{ item.author }} {{ item.dateCreated }}</div>
 
-        <AppBadge state="bronze">{{ item.status }}</AppBadge>
+        <AppTaskBadge :state="item.status" />
 
         <div class="task-item__text">
           {{ item.authorEdited }} {{ item.dateEdited }}
