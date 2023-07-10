@@ -9,26 +9,32 @@
         <div class="login-page__header">Вход</div>
         <div class="login-page__body">
           <div class="login-page__error" v-if="showLoginError">{{ errorText }}</div>
-          <AppInput
-            class="login-page__input"
-            name="userLogin"
-            type="text"
-            label="Логин"
-            required
-            width="100%"
-            v-model="login"
-          />
-          <AppInput
-            class="login-page__input"
-            name="userPassword"
-            :type="isInputPasswordType"
-            label="Пароль"
-            icon="eye-close"
-            required
-            width="100%"
-            v-model="password"
-            @click-on-icon="clickOnIcon"
-          />
+          <div class="login-page__row">
+            <div class="login-page__column">
+              <AppInputLabel required>Название</AppInputLabel>
+              <AppInput
+                name="userLogin"
+                type="text"
+                label="Логин"
+                required
+                width="100%"
+                v-model="login"
+              />
+            </div>
+            <div class="login-page__column">
+              <AppInputLabel required>Пароль</AppInputLabel>
+              <AppInput
+                name="userPassword"
+                :type="isInputPasswordType"
+                label="Пароль"
+                icon="eye-open"
+                required
+                width="100%"
+                v-model="password"
+                @click-on-icon="clickOnIcon"
+              />
+            </div>
+          </div>
         </div>
         <div class="login-page__footer">
           <AppButton
@@ -104,8 +110,6 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  @include font(14px, 400, 19px);
-  color: $font-disabled;
 }
 .login-page__container {
 
@@ -131,9 +135,21 @@ export default {
   color: $font-error;
   margin-bottom: 8px;
 }
-.login-page__input + .login-page__input {
+
+.login-page__row {
+  display: flex;
+  flex-direction: column;
+}
+.login-page__column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-page__column+.login-page__column {
   margin-top: 24px;
 }
+
 .login-page__footer {
   text-align: end;
   padding: 24px;
