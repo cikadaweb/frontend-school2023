@@ -4,7 +4,11 @@
     :class="isShowDropdown ? 'dropdown-button_active' : ''"
   >
     <ul class="dropdown-button__list">
-      <AppDropdownItem v-for="item in items" :key="item.id" >
+      <AppDropdownItem
+        v-for="item in items"
+        :key="item.id"
+        @click="clickHandler(item)"
+      >
         {{ item.text }}
       </AppDropdownItem>
     </ul>
@@ -23,6 +27,11 @@ export default {
     items: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    clickHandler (item) {
+      item.clickHandler()
     }
   }
 }
