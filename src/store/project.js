@@ -1,4 +1,12 @@
+// import { ProjectsApi } from '@/api/ProjectsApi';
+// import { DefaultAPIInstance } from '@/api';
+
+// export const mutation = {
+//   SET_PROJECTS: 'SET_PROJECTS',
+// };
+
 export default {
+  namespaced: true,
   state: {
     projects: [
       {
@@ -39,7 +47,21 @@ export default {
       }
     ]
   },
-  mutations: {},
-  actions: {},
+  actions: {
+    // async createProduct({ state, commit }, { name, code }) {
+    //   try {
+    //     const response = await ProjectsApi.getProjects(name, code);
+    //     const data = await response.data;
+    //     commit(mutation.SET_PROJECTS, data.token);
+    //   } catch (error) {
+    //     throw error;
+    //   }
+    // },
+  },
+  mutations: {
+    // [mutation.SET_PROJECTS]: (state, projects) => {
+    //   state.projects = projects;
+    // },
+  },
   getters: {}
 }
