@@ -15,7 +15,7 @@
       :is-active="isShowDropdown"
       @click-on-button="clickOnButtonAvatar"
     />
-    <Dropdown
+    <AppDropdown
       class="profile-picture__avatar-dropdown"
       :isShowDropdown="isShowDropdown"
       :items="dropdownList"

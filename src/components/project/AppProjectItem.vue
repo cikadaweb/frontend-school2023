@@ -30,7 +30,7 @@
         />
       </div>
 
-      <Dropdown
+      <AppDropdown
         class="project-item__dropdown"
         :isShowDropdown="isShowDropdown"
         :items="dropdownList"
@@ -64,14 +64,11 @@ export default {
       dropdownList: [
         {
           id: 1,
-          name: 'Редактировать',
-          url: '/'
+          text: 'Редактировать'
         },
         {
           id: 2,
-          name: 'Удалить',
-          url: '/',
-          color: 'dropdown-item__link_red'
+          text: 'Удалить'
         }
       ]
     }

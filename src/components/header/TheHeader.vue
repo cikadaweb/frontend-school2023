@@ -17,12 +17,12 @@
             <AppIcon id="#drop-down" width="24" height="24" />
           </div>
 
-          <Dropdown
+          <AppDropdown
             class="header__dropdown"
             :isShowDropdown="isShowDropdown"
             :items="dropdownList"
             ref="profileDropdown"
-            />
+          />
 
         </div>
       </nav>
@@ -62,13 +62,11 @@ export default {
       dropdownList: [
         {
           id: 1,
-          name: 'Профиль',
-          url: '/profile'
+          text: 'Профиль'
         },
         {
           id: 2,
-          name: 'Выход',
-          url: '/'
+          text: 'Выход'
         }
       ],
       isShowDropdown: false

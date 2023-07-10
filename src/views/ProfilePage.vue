@@ -22,7 +22,7 @@
                 :is-active="isShowDropdown"
                 ref="profileSettingsBtn"
               />
-              <Dropdown
+              <AppDropdown
                 class="profile-page__settings-dropdown"
                 :isShowDropdown="isShowDropdown"
                 :items="dropdownList"
@@ -62,18 +62,15 @@ export default {
       dropdownList: [
         {
           id: 1,
-          name: 'Редактировать',
-          url: '/'
+          text: 'Редактировать'
         },
         {
           id: 2,
-          name: 'Изменить пароль',
-          url: '/'
+          text: 'Изменить пароль'
         },
         {
           id: 3,
-          name: 'Просмотр задач пользователя',
-          url: '/'
+          text: 'Просмотр задач пользователя'
         }
       ]
     }
