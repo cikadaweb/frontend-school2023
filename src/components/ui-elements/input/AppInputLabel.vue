@@ -1,7 +1,12 @@
 <template>
-  <div class="label">
+  <div
+    :class="[
+      'label',
+      `${vertical ? 'label_vertical' : ''}`,
+    ]"
+  >
     <slot />
-    <span v-if="required" class="label__require">*</span>
+    <span v-if="required" class="label__require-icon">*</span>
   </div>
 </template>
 
@@ -9,6 +14,10 @@
 export default {
   props: {
     required: {
+      type: Boolean,
+      default: false
+    },
+    vertical: {
       type: Boolean,
       default: false
     }
@@ -23,7 +32,11 @@ export default {
   min-width: 120px;
 }
 
-.label__require {
+.label_vertical {
+  margin-bottom: 8px;
+}
+
+.label__require-icon {
   color: $font-error;
   margin-left: 4px;
 }
