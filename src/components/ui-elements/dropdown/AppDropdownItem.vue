@@ -16,6 +16,7 @@ export default {
   color: $font-primary-default;
   padding: 8px 16px;
   white-space: nowrap;
+  cursor: pointer;
   &:hover {
     background-color: $bg-secondary-hover
   }
