@@ -14,7 +14,7 @@
             alt="profile-img"
           />
           <div class="header__arrow-icon" :class="isShowDropdown ? 'header__arrow-icon_active' : ''">
-            <AppIcon id="#drop-down" width="24" height="24" />
+            <AppIcon id="#drop_down_1" width="24" height="24" />
           </div>
 
           <AppDropdown

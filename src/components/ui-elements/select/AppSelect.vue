@@ -17,7 +17,7 @@
       <AppIcon
         class="select__icon select__icon_down"
         :class="isShowOptions ? 'select__icon_active' : ''"
-        id="#drop-down"
+        id="#drop_down_1"
         width="24"
         height="24"
       />
