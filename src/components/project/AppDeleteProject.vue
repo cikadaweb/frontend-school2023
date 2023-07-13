@@ -3,7 +3,7 @@
     <template v-slot:header>Удаление</template>
 
     <template v-slot:body>
-      <div>Вы уверены что хотите удалить проект «Название»?</div>
+      <div>Вы уверены что хотите <span class="delete-marker">удалить</span> проект «{{ getCurrentProject.name }}»?</div>
     </template>
 
     <template v-slot:footer>
@@ -26,7 +26,7 @@
 
 <script>
 import AppModal from '@/components/modal/AppModal.vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'AppCreateProject',
@@ -34,18 +34,29 @@ export default {
     AppModal
   },
   methods: {
-    ...mapActions('project', ['deleteProject']),
+    ...mapActions('project', ['deleteProject', 'getProjects']),
     submitHandler () {
       this.deleteProject({
-        // _id: this.currentProject._id,
-        _id: '64aeec73ddea647826bb236f' // ToDO
+        _id: this.getCurrentProject._id
       }).then(() => {
+        this.getProjects({
+          page: this.getCurrentPage
+        })
         this.closeModal()
       })
     },
     closeModal () {
       this.$emit('close-modal')
     }
+  },
+  computed: {
+    ...mapGetters('project', ['getCurrentProject', 'getCurrentPage'])
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.delete-marker {
+  color: $font-error;
+}
+</style>
