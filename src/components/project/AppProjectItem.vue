@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   name: 'AppProjectItem',
@@ -64,16 +65,19 @@ export default {
       dropdownList: [
         {
           id: 1,
-          text: 'Редактировать'
+          text: 'Редактировать',
+          clickHandler: this.openEditModal
         },
         {
           id: 2,
-          text: 'Удалить'
+          text: 'Удалить',
+          clickHandler: this.openDeleteModal
         }
       ]
     }
   },
   methods: {
+    ...mapActions('project', ['setCurrentProject']),
     showKebabBtn () {
       this.isShowKebabBtn = true
     },
@@ -98,6 +102,14 @@ export default {
         this.isShowDropdown = false
         this.isShowKebabBtn = false
       }
+    },
+    openEditModal () {
+      this.$emit('open-modal', 'edit')
+      this.setCurrentProject(this.item)
+    },
+    openDeleteModal () {
+      this.$emit('open-modal', 'delete')
+      this.setCurrentProject(this.item)
     }
   }
 }
