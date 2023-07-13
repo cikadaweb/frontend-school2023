@@ -77,6 +77,11 @@ const routes = [
         component: () => import('@/views/LoginPage.vue')
       }
     ]
+  },
+  {
+    path: '*',
+    name: 'NotFoundPage',
+    component: () => import('@/views/NotFoundPage.vue')
   }
 ]
 
