@@ -53,8 +53,7 @@ export default {
     AppModal
   },
   mounted () {
-    this.projectCode = this.currentProject.code
-    this.projectName = this.currentProject.name
+    this.updateLocalData()
   },
   data () {
     return {
@@ -63,23 +62,34 @@ export default {
     }
   },
   methods: {
-    ...mapActions('project', ['editProject']),
+    ...mapActions('project', ['editProject', 'getProjects']),
     submitHandler () {
       this.editProject({
-        // _id: this.currentProject._id,
-        _id: '64aeec73ddea647826bb236f', // ToDO
+        _id: this.getCurrentProject._id,
         code: this.projectCode,
         name: this.projectName
       }).then(() => {
+        this.getProjects({
+          page: this.getCurrentPage
+        })
         this.closeModal()
       })
     },
     closeModal () {
       this.$emit('close-modal')
+    },
+    updateLocalData () {
+      this.projectCode = this.getCurrentProject.code
+      this.projectName = this.getCurrentProject.name
     }
   },
   computed: {
-    ...mapGetters('project', ['currentProject'])
+    ...mapGetters('project', ['getCurrentProject', 'getCurrentPage'])
+  },
+  watch: {
+    getCurrentProject (value) {
+      this.updateLocalData()
+    }
   }
 }
 </script>
