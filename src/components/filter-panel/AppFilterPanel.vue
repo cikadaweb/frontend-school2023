@@ -1,5 +1,5 @@
 <template>
-  <form class="filter-panel" @submit.prevent="submitHandler">
+  <form class="filter-panel" @submit.prevent="">
     <div class="filter-panel__row">
       <div class="filter-panel__column filter-panel__column_search-field">
         <AppInput
@@ -27,7 +27,7 @@
           color="secondary"
           type="button"
           label="Добавить"
-          @click-on-button="submitHandler"
+          @click-on-button="openModal"
         />
       </div>
     </div>
@@ -37,14 +37,15 @@
 <script>
 export default {
   name: 'AppFilterPanel',
+  emits: ['click-add-button'],
   data () {
     return {
       searchField: '',
       sortOptions: [
-        { name: 'По названию', value: 1 },
-        { name: 'По автору', value: 2 },
-        { name: 'По дате создания', value: 3 },
-        { name: 'По дате обновления', value: 4 }
+        { name: 'По названию', value: 'name' },
+        { name: 'По автору', value: 'author' },
+        { name: 'По дате создания', value: 'dateCreated' },
+        { name: 'По дате обновления', value: 'dateEdited' }
       ],
       selectedSortOption: 'По названию'
     }
@@ -64,6 +65,9 @@ export default {
     },
     submitHandler () {
       console.log('submitHandler')
+    },
+    openModal () {
+      this.$emit('open-modal', 'create')
     }
   },
   computed: {
@@ -75,6 +79,14 @@ export default {
         return 'error'
       }
       return 'default'
+    }
+  },
+  watch: {
+    searchField (value) {
+      this.submitHandler()
+    },
+    selectedSortOption (value) {
+      this.submitHandler()
     }
   }
 }
