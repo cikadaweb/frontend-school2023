@@ -8,22 +8,19 @@
           />
         </div>
         <div class="projects-page__column">
-          <div v-if="projects">
+          <div v-if="checkProjects">
             <AppProjectItem
-              v-for="(project, idx) in projects"
+              v-for="(project, idx) in getProjectList"
               :key="idx"
               :item="project"
               @open-modal="openModal"
             />
 
-            <!-- <AppPagination
-              :data="projects"
-              :total-pages="Math.ceil(projects.length / 4)"
-              :total="projects.length"
-              :per-page="10"
-              :current-page="currentPage"
-              @pagechanged="onPageChange"
-            /> -->
+            <AppPagination
+              :total-pages="getTotalPages"
+              :current-page="getCurrentPage"
+              @change-page="onPageChange"
+            />
 
           </div>
 
@@ -61,6 +58,7 @@ import AppDeleteProject from '@/components/project/AppDeleteProject.vue'
 import AppPagination from '@/components/pagination/AppPagination.vue'
 
 import scrollController from '@/utils/modal-scroll'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'ProjectsPage',
@@ -71,10 +69,10 @@ export default {
     return {
       isShowModal: false,
       currentModal: 'AppCreateProject'
-      // currentPage: 1
     }
   },
   mounted () {
+    this.getProjects()
     document.addEventListener('click', this.handleOutsideModalClick)
     window.addEventListener('keydown', this.handleOutsideModalClick)
   },
@@ -83,6 +81,7 @@ export default {
     window.removeEventListener('keydown', this.handleOutsideModalClick)
   },
   methods: {
+    ...mapActions('project', ['getProjects', 'setCurrentPage']),
     clickOnButton () {
       console.log('clickOnButton')
     },
@@ -107,14 +106,22 @@ export default {
     },
     closeModal () {
       this.isShowModal = false
+    },
+    onPageChange (page) {
+      this.setCurrentPage(page)
+      this.getProjects({
+        page: page
+      });
     }
-    // onPageChange (page) {
-    //   this.currentPage = page
-    // }
   },
   computed: {
-    projects () {
-      return this.$store.state.project.projects
+    ...mapGetters('project', ['getProjectList', 'getTotalPages', 'getCurrentPage']),
+    checkProjects () {
+      if (this.getProjectList.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   watch: {
