@@ -1,67 +1,86 @@
-// import { ProjectsApi } from '@/api/ProjectsApi';
+import { ProjectsApi } from '@/api/ProjectApi';
 // import { DefaultAPIInstance } from '@/api';
 
-// export const mutation = {
-//   SET_PROJECTS: 'SET_PROJECTS',
-// };
+export const mutation = {
+  SET_PROJECTS_LIST: 'SET_PROJECTS_LIST',
+  SET_PROJECTS_CURRENT_PAGE: 'SET_PROJECTS_CURRENT_PAGE',
+  SET_PROJECTS_TOTAL_PAGES: 'SET_PROJECTS_TOTAL_PAGES',
+  SET_PROJECTS_CURRENT_PROJECT: 'SET_PROJECTS_CURRENT_PROJECT'
+};
 
 export default {
   namespaced: true,
   state: {
-    projects: [
-      {
-        _id: 1,
-        code: '#1',
-        name: 'А.Очень длинное название проекта, создано специального для того чтоб не вместилось в одну строку, что позволит проверить не ломается ли верстка',
-        author: 'Иванов И.И.',
-        dateCreated: 'создал(а) 1 час назад',
-        dateEdited: 'изменил(а) 1 минуту назад',
-        authorEdited: 'Баранов В.В.'
-      },
-      {
-        _id: 2,
-        code: '#1',
-        name: 'Б.Очень длинное название проекта, создано специального для того чтоб не вместилось в одну строку, что позволит проверить не ломается ли верстка. И еще раз очень длинное название проекта, создано специально чтоб проверить не сломается ли верстка если Б.Очень длинное название проекта, создано специального для того чтоб не вместилось в одну строку, что позволит проверить не ломается ли верстка. И еще раз очень длинное название проекта, создано специально чтоб проверить не сломается ли верстка если',
-        author: 'Иванов И.И.',
-        dateCreated: 'создал(а) 1 час назад',
-        dateEdited: 'изменил(а) 1 минуту назад',
-        authorEdited: 'Баранов В.В.'
-      },
-      {
-        _id: 3,
-        code: '#1',
-        name: 'В.Название',
-        author: 'Иванов И.И.',
-        dateCreated: 'создал(а) 1 час назад',
-        dateEdited: 'изменил(а) 1 минуту назад',
-        authorEdited: 'Баранов В.В.'
-      },
-      {
-        _id: 4,
-        code: '#123456s8901234567890123456sdd01234567890123ssa1231',
-        name: 'Г.Название',
-        author: 'Иванов И.И.',
-        dateCreated: 'создал(а) 1 час назад',
-        dateEdited: 'изменил(а) 1 минуту назад',
-        authorEdited: 'Баранов В.В.'
-      }
-    ]
+    projectList: [],
+    currentPage: 1,
+    totalPages: null,
+    currentProject: {}
+  },
+  getters: {
+    getProjectList: (state) => state.projectList,
+    getTotalPages: (state) => state.totalPages,
+    getCurrentPage: (state) => state.currentPage,
+    getCurrentProject: (state) => state.currentProject
   },
   actions: {
-    // async createProduct({ state, commit }, { name, code }) {
-    //   try {
-    //     const response = await ProjectsApi.getProjects(name, code);
-    //     const data = await response.data;
-    //     commit(mutation.SET_PROJECTS, data.token);
-    //   } catch (error) {
-    //     throw error;
-    //   }
-    // },
+    async getProjects({ state, commit }, objData = { page: 1 }) {
+      try {
+        const response = await ProjectsApi.getProjects(objData);
+        const data = await response.data;
+        commit(mutation.SET_PROJECTS_LIST, data.projects);
+        commit(mutation.SET_PROJECTS_TOTAL_PAGES, data.total);
+        commit(mutation.SET_PROJECTS_CURRENT_PAGE, data.page);
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+    async createProject({ state, commit }, { name, code }) {
+      try {
+        // const response = await ProjectsApi.createProject(name, code);
+        // const data = await response.data;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+    async editProject({ state, commit }, { _id, name, code }) {
+      try {
+        // const response = await ProjectsApi.editProject(_id, name, code);
+        // const data = await response.data;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+    async deleteProject({ state, commit }, { _id }) {
+      try {
+        // const response = await ProjectsApi.deleteProject(_id);
+        // const data = await response.data;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+    setCurrentPage(context, page) {
+      context.commit(mutation.SET_PROJECTS_CURRENT_PAGE, page);
+    },
+    setCurrentProject(context, project) {
+      context.commit(mutation.SET_PROJECTS_CURRENT_PROJECT, project);
+    }
   },
   mutations: {
-    // [mutation.SET_PROJECTS]: (state, projects) => {
-    //   state.projects = projects;
-    // },
-  },
-  getters: {}
-}
+    [mutation.SET_PROJECTS_LIST]: (state, payload) => {
+      state.projectList = payload;
+    },
+    [mutation.SET_PROJECTS_TOTAL_PAGES]: (state, payload) => {
+      state.totalPages = payload;
+    },
+    [mutation.SET_PROJECTS_CURRENT_PAGE]: (state, payload) => {
+      state.currentPage = payload;
+    },
+    [mutation.SET_PROJECTS_CURRENT_PROJECT]: (state, payload) => {
+      state.currentProject = payload;
+    }
+  }
+};
